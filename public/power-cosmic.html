@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Power Cosmic - Silver Lantern's Light</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Exo 2', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(138, 43, 226, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 60% 60%, rgba(0, 255, 127, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: cosmic-drift 25s ease-in-out infinite alternate;
+        }
+
+        @keyframes cosmic-drift {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            100% { transform: translateX(30px) translateY(-30px) rotate(2deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            padding: 2rem 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            background: linear-gradient(45deg, #c0c0c0, #00ff7f, #c0c0c0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 255, 127, 0.5);
+            text-decoration: none;
+        }
+
+        .back-link {
+            color: #00ff7f;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(0, 255, 127, 0.3);
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            border-color: rgba(0, 255, 127, 0.8);
+            box-shadow: 0 0 15px rgba(0, 255, 127, 0.3);
+        }
+
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Orbitron', monospace;
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, #8a2be2, #ffd700, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 50px rgba(138, 43, 226, 0.6);
+            animation: cosmic-pulse 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes cosmic-pulse {
+            from { text-shadow: 0 0 30px rgba(138, 43, 226, 0.4); }
+            to { text-shadow: 0 0 60px rgba(138, 43, 226, 0.8), 0 0 80px rgba(255, 215, 0, 0.3); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: #ffd700;
+            margin-bottom: 2rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            color: #b0b0b0;
+        }
+
+        .content-section {
+            padding: 4rem 0;
+            margin: 2rem 0;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #8a2be2, #ffd700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .abilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .ability-card {
+            background: rgba(138, 43, 226, 0.1);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .ability-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(138, 43, 226, 0.6);
+            box-shadow: 0 15px 30px rgba(138, 43, 226, 0.2);
+        }
+
+        .ability-card h3 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4rem;
+            color: #ffd700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .ability-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        .ability-card p {
+            line-height: 1.6;
+            color: #d0d0d0;
+        }
+
+        .cosmic-hierarchy {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3rem 0;
+            margin: 3rem 0;
+        }
+
+        .hierarchy-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            background: rgba(138, 43, 226, 0.05);
+            border-left: 4px solid #8a2be2;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .hierarchy-number {
+            font-family: 'Orbitron', monospace;
+            font-size: 2rem;
+            font-weight: 900;
+            color: #ffd700;
+            margin-right: 2rem;
+            min-width: 60px;
+        }
+
+        .hierarchy-content h4 {
+            font-family: 'Orbitron', monospace;
+            color: #8a2be2;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .origins-timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin: 2rem 0;
+            align-items: flex-start;
+        }
+
+        .timeline-marker {
+            background: #8a2be2;
+            border: 3px solid #ffd700;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            margin-right: 2rem;
+            margin-top: 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content {
+            background: rgba(138, 43, 226, 0.08);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 3px solid #8a2be2;
+        }
+
+        .timeline-content h4 {
+            color: #ffd700;
+            font-family: 'Orbitron', monospace;
+            margin-bottom: 0.5rem;
+        }
+
+        .cosmic-quote {
+            text-align: center;
+            padding: 3rem;
+            background: linear-gradient(45deg, rgba(138, 43, 226, 0.1), rgba(255, 215, 0, 0.05));
+            border-radius: 20px;
+            margin: 3rem 0;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .quote-text {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: #ffd700;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .quote-attribution {
+            color: #8a2be2;
+            font-family: 'Orbitron', monospace;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.5);
+            border-top: 1px solid rgba(138, 43, 226, 0.3);
+            margin-top: 4rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 3rem; }
+            .header-content { flex-direction: column; gap: 1rem; }
+            .abilities-grid { grid-template-columns: 1fr; }
+            .hierarchy-item { flex-direction: column; text-align: center; }
+            .hierarchy-number { margin-bottom: 1rem; }
+            .timeline-item { flex-direction: column; }
+            .timeline-marker { margin-bottom: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg"></div>
+
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">Silver Lantern's Light</a>
+                <a href="index.html" class="back-link">← Back to Main</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>The Power Cosmic</h1>
+                <div class="hero-subtitle">The Ultimate Force of Creation</div>
+                <div class="hero-description">
+                    The Power Cosmic represents the fundamental force that governs the universe itself.
+                    Originally wielded by Galactus, the Devourer of Worlds, this cosmic energy grants
+                    its bearer dominion over matter, energy, space, and time. When combined with the
+                    willpower of a Green Lantern, it becomes something far greater—a force of both
+                    creation and protection.
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Cosmic Abilities</h2>
+                <div class="abilities-grid">
+                    <div class="ability-card">
+                        <h3><span class="ability-icon">⚛️</span>Matter Manipulation</h3>
+                        <p>Complete control over atomic and molecular structures. Can transmute any substance into any other, reshape matter at will, and even create new elements. This power extends to restructuring entire planets and stellar bodies.</p>
+                    </div>
+
+                    <div class="ability-card">
+                        <h3><span class="ability-icon">⚡</span>Energy Mastery</h3>
+                        <p>Absolute command over all forms of energy - electromagnetic, nuclear, kinetic, and exotic cosmic forces. Can absorb energy from stars, project devastating cosmic blasts, and manipulate the electromagnetic spectrum at will.</p>
+                    </div>
+
+                    <div class="ability-card">
+                        <h3><span class="ability-icon">🌌</span>Space-Time Control</h3>
+                        <p>Manipulation of the fabric of reality itself. Can create wormholes, fold space for instantaneous travel, dilate time, and even access parallel dimensions. The wielder exists partially outside normal spacetime.</p>
+                    </div>
+
+                    <div class="ability-card">
+                        <h3><span class="ability-icon">🧠</span>Cosmic Awareness</h3>
+                        <p>Omniscient perception across vast cosmic distances. Can sense disturbances throughout the universe, perceive events across multiple dimensions, and understand the fundamental nature of reality itself.</p>
+                    </div>
+
+                    <div class="ability-card">
+                        <h3><span class="ability-icon">🔄</span>Regeneration</h3>
+                        <p>Near-instantaneous healing and reconstruction. Can regenerate from complete molecular destruction, reform after being scattered across the cosmos, and grant immortality-level durability.</p>
+                    </div>
+
+                    <div class="ability-card">
+                        <h3><span class="ability-icon">🌟</span>Life Force Manipulation</h3>
+                        <p>Control over the very essence of life itself. Can grant or drain life force, resurrect the dead, accelerate evolution, and even create new forms of life from raw cosmic energy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cosmic-hierarchy">
+            <div class="container">
+                <h2 class="section-title">Cosmic Power Hierarchy</h2>
+                <div class="hierarchy-item">
+                    <div class="hierarchy-number">1</div>
+                    <div class="hierarchy-content">
+                        <h4>The One-Above-All</h4>
+                        <p>The supreme being of the Marvel multiverse, creator of all cosmic entities and the ultimate source of the Power Cosmic.</p>
+                    </div>
+                </div>
+                <div class="hierarchy-item">
+                    <div class="hierarchy-number">2</div>
+                    <div class="hierarchy-content">
+                        <h4>The Living Tribunal</h4>
+                        <p>Judge of the multiverse, wielding power second only to The One-Above-All, maintaining cosmic balance across all realities.</p>
+                    </div>
+                </div>
+                <div class="hierarchy-item">
+                    <div class="hierarchy-number">3</div>
+                    <div class="hierarchy-content">
+                        <h4>Galactus</h4>
+                        <p>The Devourer of Worlds, original master of the Power Cosmic and one of the fundamental forces of the universe.</p>
+                    </div>
+                </div>
+                <div class="hierarchy-item">
+                    <div class="hierarchy-number">4</div>
+                    <div class="hierarchy-content">
+                        <h4>The Silver Lantern</h4>
+                        <p>Unique fusion of the Power Cosmic and Green Lantern energy, creating an unprecedented cosmic entity with dual-nature powers.</p>
+                    </div>
+                </div>
+                <div class="hierarchy-item">
+                    <div class="hierarchy-number">5</div>
+                    <div class="hierarchy-content">
+                        <h4>Heralds of Galactus</h4>
+                        <p>Silver Surfer, Nova, Terrax, and others who wield portions of the Power Cosmic as servants of Galactus.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">Origins & Evolution</h2>
+                <div class="origins-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>The Big Bang</h4>
+                            <p>The Power Cosmic originates from the fundamental forces released during the universe's creation, existing as pure creative energy in the cosmic fabric.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Birth of Galactus</h4>
+                            <p>Galan of Taa merges with the cosmic entity that embodies the Power Cosmic, becoming Galactus and the first true wielder of this ultimate force.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>The First Herald</h4>
+                        <p>Galactus begins creating heralds, imbuing beings with portions of the Power Cosmic to serve as scouts and servants in his cosmic mission.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>Norrin Radd's Transformation</h4>
+                            <p>The nobleman of Zenn-La becomes the Silver Surfer, the most notable herald, demonstrating the Power Cosmic's ability to elevate mortal beings to cosmic status.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4>The Silver Lantern</h4>
+                            <p>In a convergence of cosmic forces, the Power Cosmic merges with Green Lantern energy, creating an entirely new form of cosmic being with unprecedented abilities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cosmic-quote">
+            <div class="container">
+                <div class="quote-text">
+                    "I am become cosmic force—both destroyer and protector, herald and guardian.
+                    Through me flows the power that shapes galaxies and the will that defends them."
+                </div>
+                <div class="quote-attribution">— The Silver Lantern</div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="container">
+                <h2 class="section-title">The Fusion Effect</h2>
+                <div style="background: rgba(138, 43, 226, 0.05); padding: 2rem; border-radius: 15px; border: 1px solid rgba(138, 43, 226, 0.2);">
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: #d0d0d0; margin-bottom: 1.5rem;">
+                        When the Power Cosmic merged with Green Lantern energy, it created something unprecedented in cosmic history.
+                        The fusion didn't simply combine two power sources—it created a symbiotic relationship where each power
+                        amplifies and refines the other.
+                    </p>
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: #d0d0d0; margin-bottom: 1.5rem;">
+                        The Green Lantern's willpower provides focus and moral direction to the chaotic creative force of the
+                        Power Cosmic, while the cosmic energy gives unlimited scope and power to the lantern's constructs.
+                        The result is a being capable of reshaping reality with pure intention.
+                    </p>
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: #d0d0d0;">
+                        Unlike traditional heralds who serve Galactus's hunger, the Silver Lantern uses the Power Cosmic
+                        for protection and creation, guided by the Green Lantern oath and an unwavering moral compass.
+                        This makes them unique among cosmic entities—a force of pure cosmic power tempered by heroic will.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Silver Lantern's Light. "With cosmic power and emerald will, I shall light the darkest void."</p>
+        </div>
+    </footer>
+</body>
+</html>
